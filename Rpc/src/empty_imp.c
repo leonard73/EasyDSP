@@ -5,9 +5,9 @@
 
 #include <stdio.h>
 #include "HAP_farf.h"
-#include "calculator.h"
+#include "empty.h"
 
-int calculator_sum(const int* vec, int vecLen, int64* res)
+int empty_sum(const int* vec, int vecLen, int64* res)
 {
   int ii = 0;
   *res = 0;

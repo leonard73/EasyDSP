@@ -1,5 +1,5 @@
 //============================================================================
-/// @file calculator.idl
+/// @file empty.idl
 ///
                                                            //qidl copyright
 //% Copyright (c) 2012-2014 Qualcomm Technologies, Inc.
@@ -10,7 +10,7 @@
 
 #include "AEEStdDef.idl"
 
-interface calculator {
+interface empty {
    long sum(in sequence<long> vec, rout long long res);
 };
 

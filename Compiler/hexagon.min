@@ -1,21 +1,21 @@
 
 # This builds the skel library
-BUILD_LIBS += libcalculator_skel
+BUILD_LIBS += libempty_skel
 
 # only build the shared object if dynamic option specified in the variant
 ifeq (1,$(V_dynamic))
-BUILD_DLLS = libcalculator_skel
+BUILD_DLLS = libempty_skel
 endif
 
-libcalculator_skel_QAICIDLS = ../Rpc/inc/calculator
-libcalculator_skel_C_SRCS += $V/calculator_skel
-libcalculator_skel.C_SRCS = ../Rpc/src/calculator_imp.c
+libempty_skel_QAICIDLS = ../Rpc/inc/empty
+libempty_skel_C_SRCS += $V/empty_skel
+libempty_skel.C_SRCS = ../Rpc/src/empty_imp.c
 
 # quality test
-BUILD_QEXES += calculator_q
+BUILD_QEXES += empty_q
 
-calculator_q_C_SRCS = ../Rpc/src/calculator_test_main ../Rpc/src/calculator_test ../Rpc/src/calculator_imp
-calculator_q_LIBS = rtld rpcmem test_util atomic
+empty_q_C_SRCS = ../Rpc/src/empty_test_main ../Rpc/src/empty_test ../Rpc/src/empty_imp
+empty_q_LIBS = rtld rpcmem test_util atomic
 
 # copy final build products to the ship directory
 BUILD_COPIES = \

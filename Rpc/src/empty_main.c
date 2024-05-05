@@ -1,4 +1,4 @@
-#include "calculator_test.h"
+#include "empty_test.h"
 #include "rpcmem.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -19,9 +19,9 @@ int main(int argc, char* argv[])
   runLocal = atoi(argv[1]);
   num = atoi(argv[2]);
   setbuf(stdout,NULL);
-  printf("\n---Starting calculator test\n");
+  printf("\n---Starting empty test\n");
 
-  nErr = calculator_test(runLocal, num);
+  nErr = empty_test(runLocal, num);
 
 bail:
   if (nErr) {

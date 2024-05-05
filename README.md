@@ -1,4 +1,3 @@
-# easyDSP
 This project is to show how to code for Qualcomm Hexagon DSP easily 
 
 [1] Download HexagonSDK3.5.2

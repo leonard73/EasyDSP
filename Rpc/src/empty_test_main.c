@@ -6,8 +6,8 @@
 #include <stdio.h>
 #include "verify.h"
 
-#include "calculator.h"
-#include "calculator_test.h"
+#include "empty.h"
+#include "empty_test.h"
 
 #ifndef CALC_EXPORT
 #define CALC_EXPORT
@@ -24,21 +24,8 @@ CALC_EXPORT int init(pfn_getSymbol GetSymbol)
 CALC_EXPORT int main(void)
 {
    int nErr  =  0;
-   int nPass =  0;
-
-   VERIFY(0 == (nErr = calculator_test(1, 256)));
-   nPass++;
-   VERIFY(0 == (nErr = calculator_test(0, 256)));
-   nPass++;
-
-bail:
-   printf("############################################################\n");
-   printf("Summary Report \n");
-   printf("############################################################\n");
-   printf("Pass: %d\n", nPass);
-   printf("Undetermined: 0\n");
-   printf("Fail: %d\n", 2 - nPass);
-   printf("Did not run: 0\n");
+   nErr=empty_test(1, 256);
+   nErr+=empty_test(0, 256);
 
    return nErr;
 }

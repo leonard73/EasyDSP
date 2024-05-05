@@ -10,9 +10,9 @@ make  tree V=${HEXAGON_BUILD_OPTION}
 #sign
 python2.7 $HEXAGON_SDK_ROOT/tools/elfsigner/elfsigner.py -i ${HEXAGON_BUILD_OPTION}/ship/*.so -o ${HEXAGON_BUILD_OPTION}/ship/signed/
 #test
-adb shell mkdir -p /data/local/tmp/EasyDSP/
-adb push ${ANDROID_BUILD_OPTION}/ship/* /data/local/tmp/EasyDSP/
-adb push ${HEXAGON_BUILD_OPTION}/ship/signed/*.so /data/local/tmp/EasyDSP/
-adb shell "export LD_LIBRARY_PATH=/data/local/tmp/EasyDSP ADSP_LIBRARY_PATH=/data/local/tmp/EasyDSP; /data/local/tmp/EasyDSP/calculator 0 1000"
+adb -s 12345678 shell mkdir -p /data/local/tmp/EasyDSP/
+adb -s 12345678 push ${ANDROID_BUILD_OPTION}/ship/* /data/local/tmp/EasyDSP/
+adb -s 12345678 push ${HEXAGON_BUILD_OPTION}/ship/signed/*.so /data/local/tmp/EasyDSP/
+adb -s 12345678 shell "export LD_LIBRARY_PATH=/data/local/tmp/EasyDSP ADSP_LIBRARY_PATH=/data/local/tmp/EasyDSP; /data/local/tmp/EasyDSP/empty 0 1000"
 cd ..
 

@@ -15,18 +15,18 @@ endif
 $(info ************  LIB=$(LIB_DSPRPC) ************) 
 
 # stub library
-BUILD_DLLS += libcalculator
-libcalculator_QAICIDLS += ../Rpc/inc/calculator
-libcalculator_C_SRCS += $V/calculator_stub
-libcalculator_DLLS += $(LIB_DSPRPC)
+BUILD_DLLS += libempty
+libempty_QAICIDLS += ../Rpc/inc/empty
+libempty_C_SRCS += $V/empty_stub
+libempty_DLLS += $(LIB_DSPRPC)
 
-# stand-alone calculator executable
-BUILD_EXES += calculator
-calculator_QAICIDLS += ../Rpc/inc/calculator
-calculator_C_SRCS += ../Rpc/src/calculator_main ../Rpc/src/calculator_test
-calculator_LIBS += rpcmem
-calculator_LD_FLAGS += -llog -ldl
-calculator_DEFINES += VERIFY_PRINT_ERROR
+# stand-alone empty executable
+BUILD_EXES += empty
+empty_QAICIDLS += ../Rpc/inc/empty
+empty_C_SRCS += ../Rpc/src/empty_main ../Rpc/src/empty_test
+empty_LIBS += rpcmem
+empty_LD_FLAGS += -llog -ldl
+empty_DEFINES += VERIFY_PRINT_ERROR
 
 # copy final build products to the ship directory
 BUILD_COPIES = \
