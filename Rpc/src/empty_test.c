@@ -4,8 +4,8 @@
 ==============================================================================*/
 
 #include "AEEStdErr.h"
-#include "calculator.h"
-#include "calculator_test.h"
+#include "empty.h"
+#include "empty_test.h"
 #include "rpcmem.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -17,7 +17,7 @@
 
 int nErr = 0; 
 
-int local_calculator_sum(const int* vec, int vecLen, int64* res)
+int local_empty_sum(const int* vec, int vecLen, int64* res)
 {
   int ii = 0;
   *res = 0;
@@ -28,7 +28,7 @@ int local_calculator_sum(const int* vec, int vecLen, int64* res)
   return 0;
 }
 
-int calculator_test(int runLocal, int num)
+int empty_test(int runLocal, int num)
 {
   int* test = 0;
   int len = 0;
@@ -58,7 +58,7 @@ int calculator_test(int runLocal, int num)
 
   if (runLocal) {
     printf("\n---Compute sum locally\n");
-    if (0 != local_calculator_sum(test, num, &result)) {
+    if (0 != local_empty_sum(test, num, &result)) {
       printf("Error: local compute failed\n");
 	  nErr = -1;
       goto bail;
@@ -66,7 +66,7 @@ int calculator_test(int runLocal, int num)
   } else {
 #ifdef __hexagon__
     printf("\n---Compute sum on the DSP\n");
-    if (0 != calculator_sum(test, num, &result)) {
+    if (0 != empty_sum(test, num, &result)) {
       printf("Error: compute on DSP failed\n");
 	  nErr = -1;
       goto bail;
@@ -77,16 +77,16 @@ int calculator_test(int runLocal, int num)
   int retry_count = 0;
 
 retry:  
-   H = dlopen("libcalculator.so", RTLD_NOW);
+   H = dlopen("libempty.so", RTLD_NOW);
    if (!H) {
-      printf("---ERROR, Failed to load libcalculator.so\n");
+      printf("---ERROR, Failed to load libempty.so\n");
 	  nErr = -1;
 	  goto bail;
    }
 
-   func_ptr = (int (*)(int*, int, int64*))dlsym(H, "calculator_sum");
+   func_ptr = (int (*)(int*, int, int64*))dlsym(H, "empty_sum");
    if (!func_ptr) {
-      printf("---ERROR, calculator_sum not found\n");
+      printf("---ERROR, empty_sum not found\n");
 	  dlclose(H);
 	  nErr = -1;
       goto bail;
